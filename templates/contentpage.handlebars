@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+
+    <meta name="description" content="{{description}}"/>
+
+    {{#import head}}{{/import}}
+</head>
+
+<body class="content">
+    <section id="hero" class="bubbled">
+        <h1>{{title}}</h1>
+    </section>
+    <article>
+        <aside></aside>
+    <main>
+        <ul class="breadcrumbs">
+        {{#each breadcrumbs}}
+            <li><a href="{{url}}">{{title}}</a></li>
+        {{/each}}
+        </ul>
+        {{html}}
+    </main>
+    </article>
+    {{#import footer}}{{/import}}
+    
+</body>
+
+</html>

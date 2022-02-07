@@ -1,0 +1,27 @@
+.hlast-string-literal {
+    color: #DD99BB;
+}
+.hlast-decimal-literal {
+    color: #7DC266;
+}
+.hlast-term {
+    font-style: italic;
+}
+.hlast-type-type {
+    color: #9898DD;
+}
+
+.hlast-keyword {
+    color: #EAD7D1;
+    font-weight: 700;
+}
+
+.md-codeblock {
+    display: inline-block;
+    border: 1px solid #0F0D1C;
+    background: #1F1A38;
+    color: #FAFDFF;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 0.8em;
+}

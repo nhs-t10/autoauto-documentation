@@ -1,0 +1,6 @@
+[build]
+command = "node build-scripts/build.js"
+publish = "public/"
+
+[dev]
+publish = "public/"
