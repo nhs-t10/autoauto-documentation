@@ -4,7 +4,7 @@ mdfile = f:mdblock b:(_n+ mdblock)* { return [f].concat(b.map(x=>x[1])).join("\n
 
 mdblock = b:(codeblock / table / heading / callout / blockquote / ul / ol / para/ nope) { return b; }
 
-table = h:throw t:(_n trow)* { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody>" }
+table = h:throw t:(_n trow)* { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody></table>" }
 
 throw = "|" h:tcell+ _n thmark 
 { return "<thead><tr>" + h.map(x=>"<th>" + x + "</th>").join("") + "</tr></thead>" }

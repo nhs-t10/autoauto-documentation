@@ -143,7 +143,7 @@ module.exports = /*
 
         peg$c0 = function(f, b) { return [f].concat(b.map(x=>x[1])).join("\n"); },
         peg$c1 = function(b) { return b; },
-        peg$c2 = function(h, t) { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody>" },
+        peg$c2 = function(h, t) { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody></table>" },
         peg$c3 = "|",
         peg$c4 = peg$literalExpectation("|", false),
         peg$c5 = function(h) { return "<thead><tr>" + h.map(x=>"<th>" + x + "</th>").join("") + "</tr></thead>" },
