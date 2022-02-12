@@ -28,6 +28,7 @@ var md = markdownFiles(__dirname + "/../md")
             return m;
         } catch(e) {
             console.error("MD syntax error in " + relLink);
+            console.error(e);
         }
     }).filter(x=>x);
 

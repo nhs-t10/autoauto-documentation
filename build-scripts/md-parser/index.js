@@ -1,6 +1,7 @@
 var lex = require("./parser").parse;
 
 module.exports = function(src) {
+    src = src.replace(/\r\n/g, "\n");
     var s = extractFrontmatter(src);
     s.frontmatter.html = lex(s.src);
     return s.frontmatter;
@@ -20,5 +21,5 @@ function extractFrontmatter(src) {
             src: src.substring(fmSrc.length + 8)
         };
     }
-    return {src: src};
+    return {frontmatter: {}, src: src};
 }

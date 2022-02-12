@@ -142,3 +142,6 @@ The "Global Prototypes" are present on *every* value.
 
 #### toString()
 
+Converts the value to a string. Tables use the following format:
+
+`[prop1 = value1.toString(), nextProperty = value2.toString(), *...*]`
