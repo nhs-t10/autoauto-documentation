@@ -6,7 +6,7 @@ description: Built-in variables available in Autoauto
 
 ## What is a built-in?
 
-A built-in exists in all Autoauto environments, and has certain behaviours. Examples are `Math`, `driveOmni`, and the **prototype functions**.
+A built-in exists in all Autoauto environments, and has certain behaviours. Examples are `Math`, `driveOmni`, and the **prototype functions**. Built-ins may not be overriden.
 
 ### Prototype Functions
 
