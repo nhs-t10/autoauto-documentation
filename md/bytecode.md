@@ -99,14 +99,6 @@ Takes the top value and places a duplicate of it on the stack
 
 Swaps the top two values on the stack
 
-### roll: `0x103`
-
-|Pop|Push|
-|-|-|
-|  *val`n`* ... *val1*, *val0*, *n*| *val0*, *val`n`* ... *val1*|
-
-Takes a number, `n`, representing how many values to roll. Then, moves the top of the stack `n` values down.
-
 ## Math Operators
 
 ### add: `0x200`
@@ -275,13 +267,21 @@ To a user's code, the relation must behave as if it has two properties: `title` 
 
 ## Constant-Loading Code Family
 
+### loadint: `0x0E??????`
+
+|Pop|Push|
+|-|-|
+||*number*|
+
+Pushes the last 3 bytes of its instruction, as an integer. The integer is interpreted with the least significant byte first.
+
 ### loadconst: `0x0F??????`
 
 |Pop|Push|
 |-|-|
 ||*constVal*|
 
-This is the only way to acquire a constant. The first byte of the 4-byte instruction identifies a `loadconst` instruction, while the remaining 3 bytes are used as an identifier.
+This is the only way to acquire a general constant. The first byte of the 4-byte instruction identifies a `loadconst` instruction, while the remaining 3 bytes are used as an identifier.
 
 An implementation may use any extralinguistic method to map a constant to its identifier; the only restriction is that each unique constant must have a unique identifier.
 
