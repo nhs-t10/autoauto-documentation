@@ -47,7 +47,7 @@ Pops a string off of the stack; jumps to that **label**.
 |-|-|
 |*condition*, *label*|
 
-Pops a value and a string off of the stack; if that value is [falsey](/definitions#h-falsey), jumps to the **label** represented by the string.
+Pops a value and a string off of the stack; if that value is **truthy**, jumps to the **label** represented by the string.
 
 ### jmp_i_cond: `0x004`
 
@@ -55,7 +55,23 @@ Pops a value and a string off of the stack; if that value is [falsey](/definitio
 |-|-|
 |*condition*, *index*|
 
-Pops a value and a string off of the stack; if that value is [falsey](/definitions#h-falsey), jumps to the **label** represented by the string.
+Pops a value and a string off of the stack; if that value is **truthy**, jumps to the **label** represented by the string.
+
+### yield: `0x005`
+
+|Pop|Push|
+|-|-|
+||
+
+Does nothing; yields control to the environment. This should be liberally peppered by any compiler! The FTC SDK will complain if not.
+
+### ret: `0x006`
+
+|Pop|Push|
+|-|-|
+||
+
+Returns the current function. This should be at the end of any function.
 
 ## Stack Manipulation Codes
 
@@ -165,6 +181,12 @@ Takes a number, `n`, representing how many values to roll. Then, moves the top o
 |-|-|
 |*a*, *b*|*a > b*|
 
+### abs_dif: `0x20C`
+
+|Pop|Push|
+|-|-|
+|*a*, *b*|*abs(a - b)*|
+
 ## Variable and Value Handling
 
 ### setvar: `0x300`
@@ -211,13 +233,31 @@ Gets the `prop` property of `value` and pushes it onto the stack.
 
 |Pop|Push|
 |-|-|
-|*arg0*, *arg1* ... *arg`L`*, *fn*, *L*|*returnValue*|
+|*arg0*, *arg1* ... *arg`L`*, *L*, *fn*|*returnValue*|
 
 Calls the value of `fn` as a function with `L` arguments. Pushes `fn`'s return value onto the stack.
 
+### makefunction: `0x306`
+
+|Pop|Push|
+|-|-|
+|*argname0*, *argname1* ... *argname`L`*, *L*, *lbl*|*function*|
+
+Bundles the *lbl* label into a function. The *argname*s may be `string`s *or* `relation`s; if they're `relation`s, then the value is used as the default value of the argument.
+
+Functions have a different operand stack, so the function body will not modify the current stack.
+
+### unit_currentv: `0x307`
+
+|Pop|Push|
+|-|-|
+|*unitvalue*|*value*|
+
+Gets the current measure of a unit. Allowed units are implementation-defined.
+
 ## Constant-Loading Code Family
 
-### loadconst: `0xFF??????`
+### loadconst: `0x0F??????`
 
 |Pop|Push|
 |-|-|
