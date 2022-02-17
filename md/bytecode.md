@@ -253,7 +253,25 @@ Functions have a different operand stack, so the function body will not modify t
 |-|-|
 |*unitvalue*|*value*|
 
-Gets the current measure of a unit. Allowed units are implementation-defined.
+Gets the current measure of a unit. Allowed units are implementation-defined, but *must* support `cm`, `ms`, and `degs`.
+
+### construct_table: `0x308`
+
+|Pop|Push|
+|-|-|
+|*elem0*, *elem1* ... *elem`L`*, *L*|*table*|
+
+Constructs a table value, popping each element of the table and pushing the result. If the elements are **relations**, they will be keyed by their title; otherwise, they will be keyed by their index.
+
+### construct_relation: `0x309`
+
+|Pop|Push|
+|-|-|
+|*title*, *value*|*relation*|
+
+Pops a `title` and `value`; uses them to create a `relation`.
+
+To a user's code, the relation must behave as if it has two properties: `title` and `value`. The `title` may not be modified, but the `value` may.
 
 ## Constant-Loading Code Family
 
