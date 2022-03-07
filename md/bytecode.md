@@ -225,7 +225,7 @@ Gets the `prop` property of `value` and pushes it onto the stack.
 
 |Pop|Push|
 |-|-|
-|*arg0*, *arg1* ... *arg`L`*, *L*, *fn*|*returnValue*|
+|*fn*, *arg0*, *arg1* ... *arg`L`*, *L*|*returnValue*|
 
 Calls the value of `fn` as a function with `L` arguments. Pushes `fn`'s return value onto the stack.
 
@@ -233,7 +233,7 @@ Calls the value of `fn` as a function with `L` arguments. Pushes `fn`'s return v
 
 |Pop|Push|
 |-|-|
-|*argname0*, *argname1* ... *argname`L`*, *L*, *lbl*|*function*|
+|*lbl*, *argname0*, *argname1* ... *argname`L`*, *L*|*function*|
 
 Bundles the *lbl* label into a function. The *argname*s may be `string`s *or* `relation`s; if they're `relation`s, then the value is used as the default value of the argument.
 

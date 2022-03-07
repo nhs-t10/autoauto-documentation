@@ -4,16 +4,17 @@ var path = require("path");
 var public = __dirname + "/../public/";
 
 if(!fs.existsSync(public)) fs.mkdirSync(public);
-if(!fs.existsSync(public + "/pages")) fs.mkdirSync(public + "/pages");
 
 var Templater = require("./templater");
 var mdParse = require("./md-parser");
 var fakeDom = require("./fake-dom");
 var rewriteMdHtml = require("./rewrite-md-html");
+var loadFilesWithExtension = require("./load-files-with-extension");
+var assets = require("./asset-manager");
 
 var templates = Object.fromEntries(
     fs.readdirSync(__dirname + "/../templates")
-        .map(x => [x.split(".")[0], new Templater(fs.readFileSync(__dirname + "/../templates/" + x).toString())])
+        .map(x => [x.split(".")[0], new Templater(fs.readFileSync(__dirname + "/../templates/" + x).toString(), assets)])
 );
 
 var md = markdownFiles(__dirname + "/../md")
@@ -33,7 +34,7 @@ var md = markdownFiles(__dirname + "/../md")
     }).filter(x=>x);
 
 
-fs.writeFileSync(path.join(public, "pages/index.html"), templates.index.render({ page: md }));
+fs.writeFileSync(path.join(public, "index.html"), templates.index.render({ page: md }));
 
 md.forEach(x => {
         x.breadcrumbs = [{ url: "/", title: "Home" }, {url: x.link, title: x.title }];
@@ -43,21 +44,10 @@ md.forEach(x => {
         rewriteMdHtml(d);
         x.html = d.innerHTML;
 
-        fs.writeFileSync(path.join(public, "pages", x.link + ".html"), x.html);
+        fs.writeFileSync(path.join(public, x.link + ".html"), x.html);
     }
 );
 
-function markdownFiles(dir) {
-    var files = fs.readdirSync(dir, { withFileTypes: true });
-    var md = [];
-
-    for (var i = 0; i < files.length; i++) {
-        var f = files[i];
-
-        var fName = path.join(dir, f.name);
-
-        if (f.isDirectory()) md = md.concat(markdownFiles(fName));
-        else if (f.name.endsWith(".md")) md.push(fName);
-    }
-    return md;
+function markdownFiles(folder) {
+    return loadFilesWithExtension(folder, ".md");
 }

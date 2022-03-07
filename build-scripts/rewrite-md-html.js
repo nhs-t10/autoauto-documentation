@@ -21,7 +21,7 @@ module.exports = function(document) {
         var head = document.getElementsByTagName("head")[0];
         var style = document.createElement("link");
         style.setAttribute("rel", "stylesheet");
-        style.setAttribute("href", "/assets/hlast-midnight.css")
+        style.setAttribute("href", "/hlast-midnight.css")
         head.appendChild(style);
     }
     
