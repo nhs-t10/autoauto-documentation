@@ -8,7 +8,7 @@ args = a:(_ id)* { return a.map(x=>x[1]); }
 
 helper = voidHelper / nonVoidHelper
 
-voidHelper = "{{#" n:id a:args "/}}" {
+voidHelper = "{{#" n:id a:args _ "/}}" {
     return {
         type: n,
         args: a,
@@ -16,7 +16,7 @@ voidHelper = "{{#" n:id a:args "/}}" {
     }
 }
 
-nonVoidHelper = "{{#" n:id a:args "}}" c:content "{{/" e:id "}}" &{ return n == e; }
+nonVoidHelper = "{{#" n:id a:args _ "}}" c:content "{{/" e:id "}}" &{ return n == e; }
 {
     return {
         type: n,

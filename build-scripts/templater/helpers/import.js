@@ -6,7 +6,7 @@ var fs = require("fs");
 module.exports = function(args, template, ctxObj, assets, _render) {
     var a = args[0] + ".handlebars";
     try {
-        var t = new Templater(fs.readFileSync(TEMPLATE_BASE_DIR + "/" + a).toString());
+        var t = new Templater(fs.readFileSync(TEMPLATE_BASE_DIR + "/" + a).toString(), assets);
         return t.render(ctxObj);
     } catch(e) {
         console.log(e);

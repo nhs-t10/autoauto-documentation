@@ -38,5 +38,5 @@ function fillAssetObject(assetFileName, assetsKeyed) {
     
     var relFile = assetFileName.replace(assetFolder, "")
         .replace(/\\/g, "/");
-    assetsKeyed[relFile] = "/" + webFile;
+    assetsKeyed[relFile] = "/assets/" + webFile;
 }
