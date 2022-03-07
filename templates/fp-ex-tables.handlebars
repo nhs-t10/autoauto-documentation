@@ -1,0 +1,96 @@
+<div class="hero-bg-left">
+                <div class="hero-bg-inner">
+                    <table>
+                    <tr><th>1</th><td>#init:</td></tr>
+                    <tr><th>2</th><td>    setServoPosition(wobbleArmLeft, 0.055), setServoPosition(wobbleArmRight, 0.055), next;</td></tr>
+                    <tr><th>3</th><td>    setServoPosition(wobbleGrabLeft, 1), setServoPosition(wobbleGrabRight, 1), next;</td></tr>
+                    <tr><th>4</th><td>    setServoPosition(shooterArm, 0.63), setMotorPower(drum, -0.5), setMotorPower(flywheel, -1.0), after 0.8s next;</td></tr>
+                    <tr><th>5</th><td>    setMotorPower(drum, 0), setMotorPower(flywheel, 0), next;</td></tr>
+                    <tr><th>6</th><td>    goto shooting</td></tr>
+                    <tr><th>7</th><td>#shooting:</td></tr>
+                    <tr><th>8</th><td>    /*drive to sampling*/</td></tr>
+                    <tr><th>9</th><td>    driveRaw(0.4,0.4,-0.4,-0.4), after 1550ticks next/*, log(getTicks())*/;</td></tr>
+                    <tr><th>10</th><td>    driveRaw(0.4,-0.4,0.4,-0.4), after 1000ticks next;</td></tr>
+                    <tr><th>11</th><td>    /*setting conditional*/</td></tr>
+                    <tr><th>12</th><td>    let rings = 0, if(isSpecial(sensorOne) > 0) let rings = 1, if(isSpecial(sensorFour) > 0) let rings = 4, log(rings), after 0.5s next;</td></tr>
+                    <tr><th>13</th><td>    /*drive to line*/</td></tr>
+                    <tr><th>14</th><td>    driveRaw(0.4,0.4,-0.4,-0.4), after 900ticks next;</td></tr>
+                    <tr><th>15</th><td>    driveRaw(0.4,-0.4,0.4,-0.4), after 300ticks next;</td></tr>
+                    <tr><th>16</th><td>    let proportional = proportionalPID(getThirdAngleOrientation(), 180, 0.001f), driveRaw(prorpotional, -1*proportional, -1*proportional, proportional), if(getThirdAngleOrientation() == 179) next, after 0.5s next;</td></tr>
+                    <tr><th>17</th><td>    driveRaw(0.0,0.0,0.0,0.0), next;</td></tr>
+                    <tr><th>18</th><td>    /*shooting*/</td></tr>
+                    <tr><th>19</th><td>    setServoPosition(shooterArm, 0.4), after 0.4s next;</td></tr>
+                    <tr><th>20</th><td>    setServoPosition(shooterArm, 0.63), setMotorPower(drum, -0.5), setMotorPower(flywheel, -1.0), after 0.8s next;</td></tr>
+                    <tr><th>21</th><td>    setMotorPower(flywheel, 0.75), after 0.5s next;</td></tr>
+                    <tr><th>22</th><td>    /*shooting*/</td></tr>
+                    <tr><th>23</th><td>    setServoPosition(shooterArm, 0.4), after 0.4s next;</td></tr>
+                    <tr><th>24</th><td>    setServoPosition(shooterArm, 0.63), setMotorPower(drum, -0.5), setMotorPower(flywheel, -1.0), after 0.8s next;</td></tr>
+                    <tr><th>25</th><td>    setMotorPower(flywheel, 0.75), after 0.5s next;</td></tr>
+                    <tr><th>26</th><td>    /*shooting*/</td></tr>
+                    <tr><th>27</th><td>    setServoPosition(shooterArm, 0.4), after 0.4s next;</td></tr>
+                    <tr><th>28</th><td>    setServoPosition(shooterArm, 0.63), setMotorPower(flywheel, 0), next;</td></tr>
+                    <tr><th>29</th><td>    /*goto different threads*/</td></tr>
+                    <tr><th>30</th><td>    if(rings == 0) goto zeroRings, if(rings == 1) goto oneRing, if(rings == 4) goto fourRings</td></tr>
+                </table>
+                </div>
+            </div>
+            <div class="hero-bg-right">
+<div class="hero-bg-inner">
+<table>
+<tr><th>1</th><td>#init:</td></tr>
+<tr><th>2</th><td>goto sampling;</td></tr>
+<tr><th>3</th><td></td></tr>
+<tr><th>4</th><td>//uses CV, saves CV reading to `value`, moves 10cm forwards so later steps won't bump up against wall</td></tr>
+<tr><th>5</th><td>#sampling:</td></tr>
+<tr><th>6</th><td>let value = getCVPositionNumberWhereZeroIsLeftOneIsMiddleAndTwoIsRight(), log(value), after 2000ms next;</td></tr>
+<tr><th>7</th><td>goto clawout</td></tr>
+<tr><th>8</th><td></td></tr>
+<tr><th>9</th><td>//The robot starts folded up so that it's inside an 18x18 cube. `clawout` folds out the arms to their full extent.</td></tr>
+<tr><th>10</th><td>#clawout:</td></tr>
+<tr><th>11</th><td>driveOmni(0.5,0,0),after 5cm next;</td></tr>
+<tr><th>12</th><td>setServoPosition("intakeMoverLeft", -1.0), setServoPosition("intakeMoverRight", 1.0), next;</td></tr>
+<tr><th>13</th><td>setServoPower("nateMoverLeft", -0.5), setServoPower("nateMoverRight", 0.5), after 3500ms next;</td></tr>
+<tr><th>14</th><td>setServoPower("nateMoverLeft", 0.0), setServoPower("nateMoverRight", 0.0), next;</td></tr>
+<tr><th>15</th><td>goto duckSpin</td></tr>
+<tr><th>16</th><td></td></tr>
+<tr><th>17</th><td>//drive left, turn left, spin carousel for 3sec, drive right</td></tr>
+<tr><th>18</th><td>#duckSpin:</td></tr>
+<tr><th>19</th><td>driveOmni(0,-0.7,0), after 83degs next;</td></tr>
+<tr><th>20</th><td>driveOmni(0.7,0,0), after 6cm next;</td></tr>
+<tr><th>21</th><td>setMotorPower("Carousel", -0.7), after 3000ms next;</td></tr>
+<tr><th>22</th><td>setMotorPower("Carousel", 0), next;</td></tr>
+<tr><th>23</th><td>driveOmni(-0.7, 0, 0), after 32cm next;</td></tr>
+<tr><th>24</th><td>driveOmni(0,0.7,0), after 80degs next;</td></tr>
+<tr><th>25</th><td>driveOmni(0,0,0), goto split</td></tr>
+<tr><th>26</th><td></td></tr>
+<tr><th>27</th><td>#split:</td></tr>
+<tr><th>28</th><td>if(value == 0) goto thirdPosition, if(value == 1) goto secondPosition, if(value == 2) goto firstPosition</td></tr>
+<tr><th>29</th><td></td></tr>
+<tr><th>30</th><td>#firstPosition:</td></tr>
+<tr><th>31</th><td>positionOne(),  when (hasEncodedMovement("ClawMotor") == false) { log("movement done"), next };</td></tr>
+<tr><th>32</th><td>goto towerDropOff</td></tr>
+<tr><th>33</th><td></td></tr>
+<tr><th>34</th><td>#secondPosition:</td></tr>
+<tr><th>35</th><td>positionTwo(),  when (hasEncodedMovement("ClawMotor") == false) { log("movement done"), next };</td></tr>
+<tr><th>36</th><td>goto towerDropOff</td></tr>
+<tr><th>37</th><td></td></tr>
+<tr><th>38</th><td>#thirdPosition:</td></tr>
+<tr><th>39</th><td>positionThree(),  when (hasEncodedMovement("ClawMotor") == false) { log("movement done"), next };</td></tr>
+<tr><th>40</th><td>goto towerDropOff</td></tr>
+<tr><th>41</th><td></td></tr>
+<tr><th>42</th><td>#towerDropOff:</td></tr>
+<tr><th>43</th><td>driveOmni(0.7,0,0), after 7cm next;</td></tr>
+<tr><th>44</th><td>setClawOpen(true), after 500ms goto finalMovement;</td></tr>
+<tr><th>45</th><td></td></tr>
+<tr><th>46</th><td>#finalMovement:</td></tr>
+<tr><th>47</th><td>driveOmni(-0.7,0,0), after 1cm next;</td></tr>
+<tr><th>48</th><td>setClawOpen(false), next;</td></tr>
+<tr><th>49</th><td>driveOmni(0,1,0), after 68degs next;</td></tr>
+<tr><th>50</th><td>driveOmni(1,0,0), after 52cm next;</td></tr>
+<tr><th>51</th><td>positionNeutral(), when (hasEncodedMovement("ClawMotor") == false) goto parking</td></tr>
+<tr><th>52</th><td></td></tr>
+<tr><th>53</th><td>#parking:</td></tr>
+<tr><th>54</th><td>driveRaw(0,0,0,0)</td></tr>
+</table>
+</div>
+            </div>

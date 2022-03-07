@@ -30,9 +30,11 @@ function fillAssetObject(assetFileName, assetsKeyed) {
         content
     ]);
     var key = crypto.createHash("sha1").update(keyBuffer).digest("hex");
+
+    var basename = path.basename(assetFileName);
     
     var webFile = key + ext;
-    if(path.basename(assetFileName).startsWith("_")) webFile = "../" + path.basename(assetFileName);
+    if(basename.startsWith("_")) webFile = "../" + basename;
     
     fs.writeFileSync(path.join(publicFolder, webFile), content);
     

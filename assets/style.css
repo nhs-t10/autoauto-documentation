@@ -23,22 +23,6 @@ h1, h2, h3, h4 {
     height: 40vh;
 }
 
-#hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle, #c6ecea 0%, #b3dfdc 15%, #b3dfdc 25%, #b2dad7 25.001%, #ddf1f0 50%, #ffffff 100%);
-}
-
-#hero h1 {
-    color: #1F1A38;
-    letter-spacing: 0.1ch;
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-
 .bubbled {
     position: relative;
 }

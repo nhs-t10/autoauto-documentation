@@ -27,6 +27,6 @@ nonVoidHelper = "{{#" n:id a:args _ "}}" c:content "{{/" e:id "}}" &{ return n =
 
 text = a:(!("{{").)+ { return { text: a.map(x=>x[1]).join("") }; }
 
-id = r:([A-Z]/[a-z]/[0-9]/".")+ { return r.join(""); }
+id = r:([A-Z]/[a-z]/[0-9]/"."/"_"/"-")+ { return r.join(""); }
 
 _ = " "*
