@@ -240,7 +240,7 @@ For example, if a function `function f (a, b, c, d) { *...* }` is on the stack, 
 |`loadconst(1)`|Although there are two items on the stack, there is only 1 named argument.|
 |`callfunction`|
 
-Named arguments override positional ones, so the value for `a` would be `apple`. However, the `callfunction` bytecode doesn't need to know the argument-names of its function-- resolving which ones overlap is left to the runtime.
+Named arguments override positional ones, so the value for `a` would be `"bapple"`. However, the `callfunction` bytecode doesn't need to know the argument-names of its function-- resolving which ones overlap is left to the runtime.
 
 After execution, this pushes `fn`'s return value onto the stack.
 
