@@ -225,9 +225,24 @@ Gets the `prop` property of `value` and pushes it onto the stack.
 
 |Pop|Push|
 |-|-|
-|*fn*, *arg0*, *arg1* ... *arg`L`*, *L*|*returnValue*|
+|*fn*, *arg0*, *arg1* ... *arg`L`*, *L*, *argname0*, *argval0*, *argname1*, *argval1*, ... *argnameN*, *argvalN*, *N* |*returnValue*|
 
-Calls the value of `fn` as a function with `L` arguments. Pushes `fn`'s return value onto the stack.
+Calls the value of `fn` as a function with `L` "positional" arguments and `N` "named" arguments.
+
+For example, if a function `function f (a, b, c, d) { *...* }` is on the stack, `f("apple", "bear", a = "bapple")` would be translated into this bytecode:
+
+|Bytecode|Note|
+|`loadconst("apple")`|
+|`loadconst("bear")`|
+|`loadconst(2)`|There are two positional arguments|
+|`loadconst("a")`|
+|`loadconst("bapple")`|
+|`loadconst(1)`|Although there are two items on the stack, there is only 1 named argument.|
+|`callfunction`|
+
+Named arguments override positional ones, so the value for `a` would be `apple`. However, the `callfunction` bytecode doesn't need to know the argument-names of its function-- resolving which ones overlap is left to the runtime.
+
+After execution, this pushes `fn`'s return value onto the stack.
 
 ### makefunction: `0x306`
 
