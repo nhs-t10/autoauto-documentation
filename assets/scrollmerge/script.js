@@ -21,17 +21,26 @@ document.addEventListener("DOMContentLoaded", function() {
      * @param {*} width 
      */
     function reRenderCanvas(ctx, width, height) {
-        var mid = width / 2;
-
-        var scrollPercent = window.scrollY / (window.innerHeight / 2);
+        var scrollPercent = Math.min(1, window.scrollY / (window.innerHeight / 3));
+        
         var scrollOfHeight = scrollPercent * height;
+        
+        var angle = (scrollPercent * Math.PI / 2) + Math.PI;
+        var epoint = [
+            width - -width * 2 * Math.cos(angle),
+            -height * 2 * Math.sin(angle)
+        ];
         
         ctx.clearRect(0, 0, width, height);
         ctx.beginPath();
-        ctx.moveTo(width, 0);
-        ctx.bezierCurveTo(mid + scrollPercent*mid, scrollOfHeight, mid - scrollPercent*mid, scrollOfHeight, 0, scrollOfHeight);
-        ctx.lineTo(0, height);
+        ctx.moveTo(0, scrollOfHeight * scrollPercent*scrollPercent);
+        ctx.bezierCurveTo(
+            width * 0.5, height * Math.sqrt(scrollPercent),
+            width * 0.5, height * Math.sqrt(scrollPercent),
+            width, scrollOfHeight * scrollPercent*scrollPercent
+        );
         ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
         ctx.closePath();
         ctx.fill();
     }

@@ -57,13 +57,13 @@ Pops a value and a string off of the stack; if that value is **truthy**, jumps t
 
 Pops a value and a string off of the stack; if that value is **truthy**, jumps to the **label** represented by the string.
 
-### yield: `0x005`
+### yield_to: `0x005`
 
 |Pop|Push|
 |-|-|
-||
+|*label*|
 
-Does nothing; yields control to the environment. This should be liberally peppered by any compiler! The FTC SDK will complain if not.
+Yields control to the environment, resuming at the **label** represented by the string. This should be liberally peppered by any compiler! The FTC SDK will complain if not.
 
 ### ret: `0x006`
 

@@ -1,0 +1,8 @@
+.aa-graphvis {
+    display: flex;
+}
+
+.aa-graphvis figcaption, .aa-graphvis svg {
+    flex-basis: 0;
+    flex-grow: 1;
+}

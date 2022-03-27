@@ -1,0 +1,15 @@
+<figure class="aa-graphvis">
+    <figcaption>
+        <pre><code>startRobot(), goto move;
+#move:
+    let turns = 0, next;
+    driveForwards(), after 2cm next;
+    turnLeft(), after 90deg next;
+    if(turns >= 4) { goto end } else skip -2;
+
+#end:
+    stopRobot()</code></pre>
+    </figcaption>
+    <svg></svg>
+</figure>
+<link rel="stylesheet" href="{{#asset aa-graphvis style.css /}}">

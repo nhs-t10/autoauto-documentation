@@ -1,14 +1,12 @@
 #hero {
-    height: min-content;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    overflow-x: hidden;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
     text-align: center;
     font-size: 2rem;
 }
@@ -42,7 +40,8 @@
 
 .hero-bg--lowerhalf.bluehalf {
     background: #0D4D96;
-    left: 25vw;
+    left: 25%;
+    width: 75%;
 }
 
 .hero-bg--upperhalf {
@@ -57,4 +56,12 @@
     flex-direction: column;
     align-items: center;
     justify-content:flex-end;
+}
+
+main {
+    max-width: 75%;
+    margin-left: 25%;
+    padding: 1em;
+    background: #0D4D96;
+    color: #F0FAF7;
 }
