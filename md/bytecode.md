@@ -233,9 +233,9 @@ Calls the value of `fn` as a function with `L` arguments. Pushes `fn`'s return v
 
 |Pop|Push|
 |-|-|
-|*lbl*, *argname0*, *argname1* ... *argname`L`*, *L*|*function*|
+|*lbl*, *argname0*, *argDefaultValue0*, *argname1*, *argDefaultValue1*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
 
-Bundles the *lbl* label into a function. The *argname*s may be `string`s *or* `relation`s; if they're `relation`s, then the value is used as the default value of the argument.
+Bundles the *lbl* label into a function. The *argname*s should be `string`s, while the *argDefaultValue*s may be any value (including `undefined`).
 
 Functions have a different operand stack, so the function body will not modify the current stack.
 
