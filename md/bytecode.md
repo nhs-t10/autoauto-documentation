@@ -251,9 +251,9 @@ Gets the current measure of a unit. Allowed units are implementation-defined, bu
 
 |Pop|Push|
 |-|-|
-|*elem0*, *elem1* ... *elem`L`*, *L*|*table*|
+|*key0*, *value0*, *key1*, *value1*, ... *keyL*, *value`L`*, *L*|*table*|
 
-Constructs a table value, popping each element of the table and pushing the result. If the elements are **relations**, they will be keyed by their title; otherwise, they will be keyed by their index.
+Constructs a `table` value, popping each element of the table and pushing the result.
 
 ### construct_relation: `0x309`
 
@@ -261,9 +261,9 @@ Constructs a table value, popping each element of the table and pushing the resu
 |-|-|
 |*title*, *value*|*relation*|
 
-Pops a `title` and `value`; uses them to create a `relation`.
+Pops a `title` and `value`; uses them to create an immutable `relation`.
 
-To a user's code, the relation must behave as if it has two properties: `title` and `value`. The `title` may not be modified, but the `value` may.
+To a user's code, the relation must behave as if it has two properties: `title` and `value`. They may not be modified; modifications should silently fail. 
 
 ## Constant-Loading Code Family
 
