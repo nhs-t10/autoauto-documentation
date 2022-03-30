@@ -232,6 +232,7 @@ Calls the value of `fn` as a function with `L` "positional" arguments and `N` "n
 For example, if a function `function f (a, b, c, d) { *...* }` is on the stack, `f("apple", "bear", a = "bapple")` would be translated into this bytecode:
 
 |Bytecode|Note|
+|-|-|
 |`loadconst("apple")`|
 |`loadconst("bear")`|
 |`loadconst(2)`|There are two positional arguments|
