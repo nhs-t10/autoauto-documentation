@@ -225,7 +225,7 @@ Gets the `prop` property of `value` and pushes it onto the stack.
 
 |Pop|Push|
 |-|-|
-|*fn*, *arg0*, *arg1* ... *arg`L`*, *L*, *argname0*, *argval0*, *argname1*, *argval1*, ... *argnameN*, *argvalN*, *N* |*returnValue*|
+|*fn*, *arg1*, *arg2* ... *arg`L`*, *L*, *argname1*, *argval1*, *argname2*, *argval2*, ... *argnameN*, *argvalN*, *N* |*returnValue*|
 
 Calls the value of `fn` as a function with `L` "positional" arguments and `N` "named" arguments.
 
@@ -249,7 +249,7 @@ After execution, this pushes `fn`'s return value onto the stack.
 
 |Pop|Push|
 |-|-|
-|*lbl*, *argname0*, *argDefaultValue0*, *argname1*, *argDefaultValue1*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
+|*lbl*, *argname1*, *argDefaultValue1*, *argname2*, *argDefaultValue2*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
 
 Bundles the *lbl* label into a function. The *argname*s should be `string`s, while the *argDefaultValue*s may be any value (including `undefined`).
 
@@ -267,7 +267,7 @@ Gets the current measure of a unit. Allowed units are implementation-defined, bu
 
 |Pop|Push|
 |-|-|
-|*key0*, *value0*, *key1*, *value1*, ... *keyL*, *value`L`*, *L*|*table*|
+|*key1*, *value1*, *key2*, *value2*, ... *keyL*, *value`L`*, *L*|*table*|
 
 Constructs a `table` value, popping each element of the table and pushing the result.
 
@@ -285,7 +285,7 @@ To a user's code, the relation must behave as if it has two properties: `title` 
 
 |Pop|Push|
 |-|-|
-|*index*, *argname0*, *argDefaultValue0*, *argname1*, *argDefaultValue1*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
+|*index*, *argname1*, *argDefaultValue1*, *argname2*, *argDefaultValue2*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
 
 Creates a function whose code starts at the *index* index. The *argname*s should be `string`s, while the *argDefaultValue*s may be any value (including `undefined`).
 
