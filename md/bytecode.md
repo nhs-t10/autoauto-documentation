@@ -245,7 +245,7 @@ Named arguments override positional ones, so the value for `a` would be `"bapple
 
 After execution, this pushes `fn`'s return value onto the stack.
 
-### makefunction: `0x306`
+### makefunction_l: `0x306`
 
 |Pop|Push|
 |-|-|
@@ -280,6 +280,16 @@ Constructs a `table` value, popping each element of the table and pushing the re
 Pops a `title` and `value`; uses them to create an immutable `relation`.
 
 To a user's code, the relation must behave as if it has two properties: `title` and `value`. They may not be modified; modifications should silently fail. 
+
+### makefunction_i: `0x30A`
+
+|Pop|Push|
+|-|-|
+|*index*, *argname0*, *argDefaultValue0*, *argname1*, *argDefaultValue1*, ... *argname`L`*, *argDefaultValue`L`*, *L*|*function*|
+
+Creates a function whose code starts at the *index* index. The *argname*s should be `string`s, while the *argDefaultValue*s may be any value (including `undefined`).
+
+Functions have a different operand stack, so the function body will not modify the current stack.
 
 ## Constant-Loading Code Family
 
