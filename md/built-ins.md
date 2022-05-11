@@ -172,27 +172,27 @@ Returns the absolute value of x.
 
 #### Math.acos(x)
 
-Returns the arccosine of x.
+Returns the arccosine (inverse cosine) of x, in radians.
 
 #### Math.acosh(x)
 
-Returns the hyperbolic arccosine of x.
+Returns the hyperbolic arccosine (inverse cosine) of x. X is measured in radians.
 
 #### Math.asin(x)
 
-Returns the arcsine of x.
+Returns the arcsine (inverse sine) of x, in radians.
 
 #### Math.asinh(x)
 
-Returns the hyperbolic arcsine of a number.
+Returns the hyperbolic arcsine of a number, in radians.
 
 #### Math.atan(x)
 
-Returns the arctangent of x.
+Returns the arctangent (inverse tangent) of x, in radians.
 
 #### Math.atanh(x)
 
-Returns the hyperbolic arctangent of x.
+Returns the hyperbolic arctangent (inverse tangent) of x, in radians.
 
 #### Math.atan2(y, x)
 
@@ -212,11 +212,11 @@ Returns the number of leading zero bits x will have when converted to a 32-bit i
 
 #### Math.cos(x)
 
-Returns the cosine of x.
+Returns the cosine of x. X is measured in radians.
 
 #### Math.cosh(x)
 
-Returns the hyperbolic cosine of x.
+Returns the hyperbolic cosine of x. X is measured in radians.
 
 #### Math.exp(x)
 
@@ -286,11 +286,11 @@ If `x>0`, reutrns `1`.
 
 #### Math.sin(x)
 
-Returns the sine of x.
+Returns the sine of x. X is measured in radians.
 
 #### Math.sinh(x)
 
-Returns the hyperbolic sine of x.
+Returns the hyperbolic sine of x. X is measured in radians.
 
 #### Math.sqrt(x)
 
@@ -298,11 +298,11 @@ Returns the square root of x.
 
 #### Math.tan(x)
 
-Returns the tangent of x.
+Returns the tangent of x. X is measured in radians.
 
 #### Math.tanh(x)
 
-Returns the hyperbolic tangent of x.
+Returns the hyperbolic tangent of x. X is measured in radians.
 
 #### Math.trunc(x)
 
