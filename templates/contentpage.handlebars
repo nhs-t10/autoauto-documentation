@@ -4,9 +4,10 @@
 <head>
     <title>{{title}}</title>
 
-    <meta name="description" content="{{description}}"/>
+    <meta name="description" content="{{description}}" />
 
     {{#import head /}}
+    <script src="{{#asset toc.js /}}" async></script>
 </head>
 
 <body class="content">
@@ -14,18 +15,18 @@
         <h1>{{title}}</h1>
     </section>
     <article>
-        <aside></aside>
-    <main>
-        <ul class="breadcrumbs">
-        {{#each breadcrumbs}}
-            <li><a href="{{url}}">{{title}}</a></li>
-        {{/each}}
-        </ul>
-        {{html}}
-    </main>
+        <aside id="toc"></aside>
+        <main>
+            <ul class="breadcrumbs">
+                {{#each breadcrumbs}}
+                <li><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+            {{html}}
+        </main>
     </article>
     {{#import footer /}}
-    
+
 </body>
 
 </html>
