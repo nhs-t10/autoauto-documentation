@@ -31,6 +31,8 @@ function intersectCallback(liElements) {
             if (entry.isIntersecting) {
                 selection.selectItem(liElements[entry.target.id]);
                 break;
+            } else if(entry.boundingClientRect.y > 0) {
+                selection.selectItemBefore(liElements[entry.target.id]);
             }
         }
     }

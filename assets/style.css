@@ -21,7 +21,13 @@ h1, h2, h3, h4 {
 
 
 .content #hero {
+    background: #0D4D96;
+    color: #F0FAF7;
     height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 
 .bubbled {
@@ -113,7 +119,7 @@ a {
     grid-column: 1;
     padding: 1em;
     grid-row: 2;
-    
+
     width: 100%;
 }
 
