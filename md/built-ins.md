@@ -41,7 +41,7 @@ The `len()` function's behavior depends on its argument's type.
 
 ### delegate() function
 
-Calling `delegate(*filename*)` will "delegate" to that file. For every time it is evaluated, one loop will be called on the other file. The other file does *not* have access to the "delegater"'s variables.
+Calling `delegate(*filename*)` will "delegate" to that file. For every time it is evaluated, one loop will be called on the other file. The other file does *not* have access to the "delegater"'s variables, but values may be passed by calling `delegate(*filename*, *value0*, *value1*, ...)`: when using the multiple-argument case, the other file can use `module_args[0]`, `module_args[1]`, etc. to access arguments.
 
 <strong>Calling multiple `delegate()`s in the same state is NOT recommended, for performance reasons.</strong>
 

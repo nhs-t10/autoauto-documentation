@@ -31,7 +31,7 @@ Does nothing.
 |-|-|
 |*index*|
 
-Pops a number off of the stack; jumps to that **instruction**, treating the program as an array (starting at index 0).
+Pops a number, `offset`, off of the stack; skips `offset` **instructions**, treating the program as an array (starting at index 0). `offset` may be positive or negative. If `offset` is 0, this has the same effect as `pop`: no jumping.
 
 ### jmp_l: `0x002`
 
@@ -55,7 +55,7 @@ Pops a value and a string off of the stack; if that value is **truthy**, jumps t
 |-|-|
 |*condition*, *index*|
 
-Pops a value and a string off of the stack; if that value is **truthy**, jumps to the **label** represented by the string.
+Pops a value and a number off of the stack; if that value is **truthy**, skips `offset` instructions. `offset` may be positive or negative.
 
 ### yield_to: `0x005`
 
