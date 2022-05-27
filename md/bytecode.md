@@ -69,9 +69,9 @@ Yields control to the environment, resuming at the **label** represented by the 
 
 |Pop|Push|
 |-|-|
-||
+|*v*||
 
-Returns the current function. This should be at the end of any function.
+Pops a value and `return`s it from the current function. If this is not inside a function (i.e. there is no caller), then this serves the same as `pop`. This should be at the end of any function.
 
 ## Stack Manipulation Codes
 

@@ -126,11 +126,188 @@ These *top-level variables* are all defined in any program.
 
 ### True, TRUE, False, and FALSE
 
-These variables let you use PythonStyle or javastyle for your boolean capitalization.
+These variables let you use PythonStyle or javastyle for your boolean capitalization. The canonical spellings *are* `true` and `false`.
 
 ### Math
 
-The `Math` built-in is a table; its properties can be found in [the Math section](#h-math).
+The `Math` built-in is a table; you call its methods like `Math.sin()` or `Math.random()`.
+
+In short, `Math` is a direct copy of ES6's `Math`. The following section has every `Math` property; it is taken under CC-BY-SA from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math):
+
+#### Math.E
+
+Euler's constant and the base of natural logarithms; approximately 2.718.
+
+#### Math.LN2
+
+Natural logarithm of 2; approximately 0.693.
+
+#### Math.LN10
+
+Natural logarithm of 10; approximately 2.303.
+
+#### Math.LOG2E
+
+Base-2 logarithm of E; approximately 1.443.
+
+#### Math.LOG10E
+
+Base-10 logarithm of E; approximately 0.434.
+
+#### Math.PI
+
+Ratio of a circle's circumference to its diameter; approximately 3.14159.
+
+#### Math.SQRT1_2
+
+Square root of 0.5; approximately 0.707.
+
+#### Math.SQRT2
+
+Square root of 2; approximately 1.414.
+
+#### Math.abs(x)
+
+Returns the absolute value of x.
+
+#### Math.acos(x)
+
+Returns the arccosine (inverse cosine) of x, in radians.
+
+#### Math.acosh(x)
+
+Returns the hyperbolic arccosine (inverse cosine) of x. X is measured in radians.
+
+#### Math.asin(x)
+
+Returns the arcsine (inverse sine) of x, in radians.
+
+#### Math.asinh(x)
+
+Returns the hyperbolic arcsine of a number, in radians.
+
+#### Math.atan(x)
+
+Returns the arctangent (inverse tangent) of x, in radians.
+
+#### Math.atanh(x)
+
+Returns the hyperbolic arctangent (inverse tangent) of x, in radians.
+
+#### Math.atan2(y, x)
+
+Returns `atan(y/x)`, but more efficiently.
+
+#### Math.cbrt(x)
+
+Returns the cube root of x.
+
+#### Math.ceil(x)
+
+Returns the smallest integer greater than or equal to x.
+
+#### Math.clz32(x)
+
+Returns the number of leading zero bits x will have when converted to a 32-bit integer.
+
+#### Math.cos(x)
+
+Returns the cosine of x. X is measured in radians.
+
+#### Math.cosh(x)
+
+Returns the hyperbolic cosine of x. X is measured in radians.
+
+#### Math.exp(x)
+
+Returns e^x, where x is the argument, and e is Euler's constant (2.718..., the base of the natural logarithm).
+
+#### Math.expm1(x)
+
+Returns subtracting 1 from exp(x).
+
+#### Math.floor(x)
+
+Returns the largest integer less than or equal to x.
+
+#### Math.fround(x)
+
+Returns the nearest single precision float representation of x.
+
+#### Math.hypot(a, b)
+
+Solves the Pythagorean theorem (`a^2 + b^2 = c^2`) for its arguments. Returns `c`.
+
+#### Math.imul(x, y)
+
+Returns the result of the 32-bit integer multiplication of x and y.
+
+#### Math.log(x)
+
+Returns the natural logarithm (log<sub>e</sub>) of x.
+
+#### Math.log1p(x)
+
+Returns the natural logarithm (log<sub>e</sub>) of 1 + x.
+
+#### Math.log10(x)
+
+Returns the base-10 logarithm of x.
+
+#### Math.log2(x)
+
+Returns the base-2 logarithm of x.
+
+#### Math.max(a, b, ...)
+
+Returns the largest of two or more numbers.
+
+#### Math.min(a, b, ...)
+
+Returns the smallest of two or more numbers.
+
+#### Math.pow(x, y)
+
+Returns `x^y`. The same as the built-in `x^y` or `x**y` operation.
+
+#### Math.random()
+
+Returns a pseudo-random number between 0 and 1 (inclusive, exclusive: it *may* return 0, but will *never* return 1).
+
+#### Math.round(x)
+
+Returns the number x rounded to the nearest integer.
+
+#### Math.sign(x)
+
+If `x<0`, returns `-1`. 
+If `x==0`, returns `0`.
+If `x>0`, reutrns `1`.
+
+#### Math.sin(x)
+
+Returns the sine of x. X is measured in radians.
+
+#### Math.sinh(x)
+
+Returns the hyperbolic sine of x. X is measured in radians.
+
+#### Math.sqrt(x)
+
+Returns the square root of x.
+
+#### Math.tan(x)
+
+Returns the tangent of x. X is measured in radians.
+
+#### Math.tanh(x)
+
+Returns the hyperbolic tangent of x. X is measured in radians.
+
+#### Math.trunc(x)
+
+Returns the integer portion of x, removing any fractional digits.
+
 
 ## Prototype Functions
 
