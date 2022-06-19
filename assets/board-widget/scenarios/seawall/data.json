@@ -1,0 +1,137 @@
+{
+    "name": "Seawall",
+    "id": "seawall",
+    "elements": [
+        {
+            "id": "red-start",
+            "specialType": "red-start",
+            "position": {
+                "top": 6,
+                "left": 5.2
+            }
+        },
+        {
+            "id": "blue-start",
+            "specialType": "blue-start",
+            "position": {
+                "top": 6,
+                "left": 1
+            }
+        },
+        {
+            "id": "blue-start-box",
+            "box": {
+                "top": 6.5,
+                "left": 1,
+                "width": 1.5,
+                "height": 1.5
+            },
+            "collides": false,
+            "color": "blue",
+            "colorType": "stroke"
+        },
+        {
+            "id": "red-start-box",
+            "box": {
+                "top": 6.5,
+                "left": 5.5,
+                "width": 1.5,
+                "height": 1.5
+            },
+            "collides": false,
+            "color": "red",
+            "colorType": "stroke"
+        },
+        {
+            "id": "blue-goal-box",
+            "box": {
+                "top": 0,
+                "left": 5.75,
+                "width": 2.25,
+                "height": 2
+            },
+            "collides": false,
+            "color": "blue"
+        },
+        {
+            "id": "red-goal-box",
+            "box": {
+                "top": 0,
+                "left": 0,
+                "width": 2.25,
+                "height": 2
+            },
+            "collides": false,
+            "color": "red"
+        },
+        {
+            "id": "speed-bump-left",
+            "box": {
+                "top": 0,
+                "left": 2.25,
+                "width": 0.125,
+                "height": 2
+            },
+            "collides": false,
+            "color": "#111"
+        },
+        {
+            "id": "speed-bump-right",
+            "box": {
+                "top": 0,
+                "left": 5.625,
+                "width": 0.125,
+                "height": 2
+            },
+            "collides": false,
+            "color": "#111"
+        },
+        {
+            "id": "wall-left",
+            "box": {
+                "top": 2,
+                "left": 0,
+                "width": 2.5,
+                "height": 0.25
+            },
+            "collides": true,
+            "color": "grey"
+        },
+        {
+            "id": "wall-right",
+            "box": {
+                "top": 2,
+                "left": 5.5,
+                "width": 2.5,
+                "height": 0.25
+            },
+            "collides": true,
+            "color": "grey"
+        },
+        {
+            "id": "wall-middle-down",
+            "box": {
+                "top": 2,
+                "left": 2.5,
+                "width": 3,
+                "height": 0.25
+            },
+            "collides": false,
+            "color": "seagreen"
+        },
+        {
+            "id": "ball",
+            "box": {
+                "top": 4,
+                "left": 3.5,
+                "width": 1,
+                "height": 1
+            },
+            "rounded": 1.5,
+            "collides": true,
+            "color": "yellow",
+            "isManipulative": true
+        }
+    ]
+
+}

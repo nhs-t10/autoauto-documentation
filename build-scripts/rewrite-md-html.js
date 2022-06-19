@@ -1,7 +1,9 @@
+const serverRenderBoardWidget = require("../assets/board-widget/server-render");
+
 /**
  * @param {import("./fake-dom").FakeDocument} document
  */
-module.exports = function(document) {
+module.exports = function(document, assets) {
     
     var main = document.getElementsByTagName("main")[0];
     
@@ -21,9 +23,11 @@ module.exports = function(document) {
         var head = document.getElementsByTagName("head")[0];
         var style = document.createElement("link");
         style.setAttribute("rel", "stylesheet");
-        style.setAttribute("href", "/hlast-midnight.css")
+        style.setAttribute("href", assets.get("/hlast-midnight.css"));
         head.appendChild(style);
     }
+
+    serverRenderBoardWidget(document, assets);
     
     makeTableOfContents(document, main);
 }

@@ -566,7 +566,7 @@ function parseHTML(str) {
                     var attrs = Object.keys(attributes);
                     for (var j = 0; j < attrs.length; j++) node.setAttribute(attrs[j], attributes[attrs[j]]);
                     add(node, true);
-                    if(stack[stack.length - 1].nodeName == currentTag) stack.splice(stack.length - 1, 1);
+                    if(stack.length == 0 || stack[stack.length - 1].nodeName == currentTag) stack.pop();
                     context = "base";
                     currentTag = "";
 

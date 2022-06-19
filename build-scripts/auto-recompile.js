@@ -13,11 +13,13 @@ fs.watch(__dirname + "/../", {recursive: true}, function() {
 
 function rebuild() {
     rbLock = true;
-    cp.exec("node build.js", {cwd: __dirname}, function(error, stdout, stderr) {
-        rbLock = false;
-        if(error) throw error;
-        if(stdout) console.log(stdout);
-        if(stderr) console.error(stderr);
-    });
+    try {
+        cp.exec("node build.js", {cwd: __dirname}, function(error, stdout, stderr) {
+            rbLock = false;
+            if(error) console.error(error);
+            if(stdout) console.log(stdout);
+            if(stderr) console.error(stderr);
+        });
+    } catch(e) {}
 }
 rebuild();

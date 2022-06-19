@@ -2,7 +2,7 @@
 
 mdfile = f:mdblock b:(_n+ mdblock)* { return [f].concat(b.map(x=>x[1])).join("\n"); }
 
-mdblock = b:(codeblock / table / heading / callout / blockquote / ul / ol / para/ nope) { return b; }
+mdblock = b:(codeblock / table / heading / callout / blockquote / ul / ol / fnText / para / nope) { return b; }
 
 table = h:throw t:(_n trow)* { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody></table>" }
 
@@ -63,7 +63,7 @@ para = h:inlinetext t:(_n inlinetext)* { return "<p>" + [h].concat(t.map(x=>x[1]
 
 inlinetext = t:inlineatom+ { return t.join("") }
 
-inlineatom = escaped / plainchar / bold / italics / link / inlinecode / barespecial
+inlineatom = escaped / plainchar / bold / italics / link / footnote / inlinecode / barespecial
 
 escaped = "\\" t:. { return t; } 
 
@@ -77,7 +77,15 @@ inlinecode = "`" t:(!"`" inlineatom)* "`" { return "<code>" + t.map(x=>x[1]).joi
 
 link = "[" t:(!"]" inlineatom)* "]" "(" l:(!")" inlineatom)* ")" 
 { return "<a href=\"" + l.map(x=>x[1]).join("") + "\">" + t.map(x=>x[1]).join("") + "</t>" } 
-	
+
+footnote = "[" n: num "]" {
+    return "<sup class=\"fn\" id=\"fn-back-" + n + "\"><a href=\"#fn-" + n + "\">[" + n + "]</a></sup>";
+}
+
+fnText = "[" n:num "]:" t: inlinetext {
+    return "<a id=\"fn-" + n + "\" href=\"#fn-back-" + n + "\">[" + n + "]</a>" + t;
+}
+
 plaintext = t:plainchar+ { return t.join("") }
 
 plainchar = entity / !barespecial t:[^\n] {return t}
@@ -87,6 +95,6 @@ barespecial = "*" / "~" / "[" / "]" / "(" / ")" / "`" / "#" / "|"
 entity = "&" { return "&amp;" }
 
 _n = "\n"
-num = [0-9]+
+num = n: ([0-9]+) { return n.join("") }
 
 nope = ""

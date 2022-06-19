@@ -65,3 +65,7 @@ main {
     background: #0D4D96;
     color: #F0FAF7;
 }
+
+.dl-buttons a {
+    margin: 0 1em;
+}

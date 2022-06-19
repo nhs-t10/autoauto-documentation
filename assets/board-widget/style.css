@@ -1,0 +1,15 @@
+.board-widget svg {
+    width: 40ch;
+    max-width: 100%;
+
+    height: auto;
+
+    margin: auto;
+
+    background-color: #aaa;
+}
+
+.board-widget {
+    display: grid;
+    
+}

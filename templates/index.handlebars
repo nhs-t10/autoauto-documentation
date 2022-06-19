@@ -30,13 +30,35 @@
         <div class="hero-bg--lowerhalf">
             <p>Making it way easier to code for FTC</p>
             <div class="dl-buttons">
-                <a href="/syntax">Learn</a>
+                <a href="/tutorials">Learn</a>
                 <a href="https://github.com/nhs-t10/AutoautoLanguagePlugin/releases">Get Plugin</a>
             </div>
         </div>
         {{#import scrollmerge /}}
     </div>
     <main>
+        <section id="recent-content">
+            <h2>Want to jump right in?</h2>
+            <ul>
+                {{#each page}}
+                {{#if homepage}}
+                <li>
+                    <a href="{{link}}" class="blocklink">
+                        <ul class="tags">
+                            {{#each tags}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                        <h3>
+                            {{title}}
+                        </h3>
+                        <p>{{description}}</p>
+                    </a>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </section>
         <section>
             <h2>A Language for Autonomous</h2>
             <p>State-based auto just <em>works</em>. Any state machine can be represented in Autoauto with
@@ -56,34 +78,19 @@
             <h2>Works with you</h2>
             <p>No matter <em>what</em> your system is, Autoauto will work with it. Your own library class? A distributed
                 system of classes, split up by feature? Just the basic FTC SDK? Sure!</p>
-            <p>Integrated compiler code generation, combined with runtime JDK integration, lets you do anything from Java.</p>
+            <p>Integrated compiler code generation, combined with runtime JDK integration, lets you do anything from
+                Java.</p>
         </section>
         <section>
             <h2>(actually) Zero-Cost Abstraction</h2>
             <p>Compile-time optimizations let you build more, without worrying about how latency affects your code.</p>
         </section>
         <section>
-            <h2></h2>
-        </section>
-        <section id="recent-content">
-            <h2>Want to jump right in?</h2>
-            <ul>
-                {{#each page}}
-                <li>
-                    <a href="{{link}}" class="blocklink">
-                        <ul class="tags">
-                            {{#each tags}}
-                            <li>{{this}}</li>
-                            {{/each}}
-                        </ul>
-                        <h3>
-                            {{title}}
-                        </h3>
-                        <p>{{description}}</p>
-                    </a>
-                </li>
-                {{/each}}
-            </ul>
+            <h2>Low Floor; High Ceiling</h2>
+            <p>Start out with simple code in less than a day. Make a five-step auto in five lines of code.</p>
+            <p>Once you want to expand, you <em>can</em>: change how the compiler treats each file by using frontmatter;
+                import files fearlessly with static linking and type checking.</p>
+            <p>If Autoauto can't do something you want, code it in Java and call any method from within Autoauto.</p>
         </section>
     </main>
     {{#import footer /}}
