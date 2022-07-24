@@ -20,7 +20,7 @@ Start here if you haven't coded before.
 
 Start here if you've coded in another language before.
 
-*This section is under construction :)*
+*This section is under construction :) Please use the Basic tutorials for now*
 
 ## Advanced Tutorials
 
