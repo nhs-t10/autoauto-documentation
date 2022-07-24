@@ -2,7 +2,7 @@
 
 mdfile = f:mdblock b:(_n+ mdblock)* { return [f].concat(b.map(x=>x[1])).join("\n"); }
 
-mdblock = b:(codeblock / table / heading / callout / blockquote / ul / ol / fnText / para / nope) { return b; }
+mdblock = b:(codeblock / table / heading / callout / blockquote / ul / ol / fnText / hr / para / nope) { return b; }
 
 table = h:throw t:(_n trow)* { return "<table>" + h + "<tbody>\n" + t.map(x=>x[1]).join("\n") + "</tbody></table>" }
 
@@ -12,6 +12,8 @@ throw = "|" h:tcell+ _n thmark
 thmark = ("|" "-"+)+ "|"
 
 tcell = f:(!"|" inlineatom)* "|" { return f.map(x=>x[1]).join(""); }
+
+hr = "---" { return "<hr>" }
 
 trow = "|" h:tcell+
 { return "<tr>" + h.map(x=>"<td>" + x + "</td>").join("") + "</tr>" }
@@ -76,7 +78,7 @@ struck = "~~" t:(!"~~" inlineatom)* "~~" { return "<del>" + t.map(x=>x[1]).join(
 inlinecode = "`" t:(!"`" inlineatom)* "`" { return "<code>" + t.map(x=>x[1]).join("") + "</code>" } 
 
 link = "[" t:(!"]" inlineatom)* "]" "(" l:(!")" inlineatom)* ")" 
-{ return "<a href=\"" + l.map(x=>x[1]).join("") + "\">" + t.map(x=>x[1]).join("") + "</t>" } 
+{ return "<a href=\"" + l.map(x=>x[1]).join("") + "\">" + t.map(x=>x[1]).join("") + "</a>" } 
 
 footnote = "[" n: num "]" {
     return "<sup class=\"fn\" id=\"fn-back-" + n + "\"><a href=\"#fn-" + n + "\">[" + n + "]</a></sup>";

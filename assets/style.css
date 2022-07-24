@@ -19,6 +19,10 @@ h1, h2, h3, h4 {
     letter-spacing: 0.05ch;
 }
 
+hr {
+    margin-top: 2em;
+}
+
 
 .content #hero {
     background: #0D4D96;

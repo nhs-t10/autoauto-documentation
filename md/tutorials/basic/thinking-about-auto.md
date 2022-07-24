@@ -34,6 +34,26 @@ Now that you have your freeform-line plan, you need to break it down into straig
 
 Here's the previous freeform plan, broken down into **steps**. Each straight line that you see here is a step!
 
+## Listing Your Steps
 
+We have the steps in a *graphical* representation (lines), but you need them in a *textual* representation-- something like: 
+
+1. Move right 2ft
+2. Move forwards 5ft
+3. Move left 0.5ft
+4. Move forwards 1ft
+5. Move right 2ft
+
+These numbers don't need to be exact, but you should try to get the directions and proportions down.
+
+!> If your robot turns, make sure that you're using the *robot's* "forward", not yours!
+
+## Next
+
+With your list of steps, you can move on to the next tutorial, where you'll write some code!
+
+)> Next: [States](./states)
+
+---
 
 [1]: Diagonal movement can be unreliable-- it's *very* easy for weight distribution to throw a robot off. It's doable, but try to avoid it.
