@@ -10,12 +10,16 @@ body {
     ;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     margin: 1em;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     letter-spacing: 0.05ch;
 }
 
@@ -215,10 +219,65 @@ aside#toc {
 }
 
 .content main aside {
-    border: 2px solid #7B506F;
+    position: relative;
+    margin-top: 2.5rem;
     padding: 1em;
-    border: 0 1em;
-    border-radius: 1em;
+    background-color: #C4DAE9;
+    border-left: 0.5rem solid #7AADCC;
+}
+
+.content main aside::before {
+    content: "Note";
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    padding: 0.25rem;
+    left: 0rem;
+    height: 1rem;
+    font-size: 1em;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    background-color: inherit;
+    
+    font-weight: bold;
+}
+
+.content main aside.exclaim-type-ny::before {
+    content: "! Needham-Specific Advice";
+}
+
+.content main aside.exclaim-type-ct {
+    background-color: #e9c4e4;
+    border-left-color: #cc7ac1;
+}
+
+.content main aside.exclaim-type-ct::before {
+    content: "quick note :)"
+}
+
+.content main aside.exclaim-type-ex {
+    background-color: #f8ebc9;
+    border-left-color: #f8c16d;
+}
+
+.content main aside.exclaim-type-ex::before {
+    content: "Important!"
+}
+
+.content main aside.exclaim-type-po::before {
+    content: "Previous"
+}
+.content main aside.exclaim-type-pc::before {
+    content: "Next Up"
+}
+
+
+.content main aside.exclaim-type-pc, .content main aside.exclaim-type-po {
+    padding: 0;
+}
+
+.content main aside.exclaim-type-pc a, .content main aside.exclaim-type-po a {
+    display: block;
+    padding: 1.5rem;
 }
 
 .content img {
@@ -259,7 +318,8 @@ article table {
     overflow-x: auto;
 }
 
-article td, th {
+article td,
+th {
     padding: 0.5em;
 }
 

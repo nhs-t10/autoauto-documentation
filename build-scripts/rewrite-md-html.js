@@ -1,4 +1,5 @@
 const serverRenderBoardWidget = require("../assets/board-widget/server-render");
+const lexAutoauto = require("./highlighters/lex-autoauto");
 
 /**
  * @param {import("./fake-dom").FakeDocument} document
@@ -29,7 +30,23 @@ module.exports = function(document, assets) {
 
     serverRenderBoardWidget(document, assets);
     
+    highlightAutoauto(document);
+    
     makeTableOfContents(document, main);
+}
+
+/**
+ * @param {import("./fake-dom").FakeDocument} document
+ */
+function highlightAutoauto(document) {
+    var codeblocks = document.getElementsByClassName("md-codeblock");
+    
+    for(const codeblock of codeblocks) {
+        const code = codeblock.childNodes[0];
+        if (code.getAttribute("data-lang") == "aa") {
+            code.innerHTML = lexAutoauto(code.textContent);
+        }
+    }
 }
 
 function makeTableOfContents(document, main) {

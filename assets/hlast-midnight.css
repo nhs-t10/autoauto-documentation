@@ -12,16 +12,22 @@
 }
 
 .hlast-keyword {
-    color: #EAD7D1;
+    color: #e6b4a5;
     font-weight: 700;
 }
 
+.hlast-line-comment, .hlast-comment {
+    font-style: italic;
+    color: #c5c5e7;
+}
+
 .md-codeblock {
-    display: inline-block;
+    display: block;
     border: 1px solid #0F0D1C;
     background: #1F1A38;
     color: #FAFDFF;
     padding: 0.5em;
     border-radius: 0.5em;
     font-size: 0.8em;
+    margin: 1em auto;
 }

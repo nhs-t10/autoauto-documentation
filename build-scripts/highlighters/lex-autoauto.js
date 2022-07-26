@@ -1,60 +1,23 @@
-module.exports = lexJava;
-
-function getLineAddresses(source) {
-    var lexed = lexJava(source);
-    var lexedLines = lexed.split("\n");
-    var linesResult = [];
-    for(var i = 0; i < lexedLines.length; i++) {
-        var lastIndexOfAddressKey = lexedLines[i].lastIndexOf("data-address=");
-        if(lastIndexOfAddressKey == -1) {
-            linesResult.push("");
-            continue;
-        }
-
-        //displace by 1 to shift over the opening quote
-        var addressValueStartIndex = lastIndexOfAddressKey + ("data-address=".length + 1);
-        var address = "";
-        for(var j = addressValueStartIndex; lexedLines[i].charAt(j) != "\""; j++) {
-            address += lexedLines[i].charAt(j);
-        }
-        linesResult.push(address);
-    }
-
-    return linesResult;
-}
+module.exports = lexAutoauto;
 
 
-var keywordContexts = {
-    "class": "keyword",
-    "public": "keyword",
-    "static": "keyword",
-    
-    "public": "modifier",
-    "private": "modifier",
+var keywordContexts = {    
+    "provide": "modifier",
+    "delegate": "modifier",
 
     "void": "void",
-    "new": "new",
+    "module_args": "this",
     "this": "this",
-    "super": "this",
-    "null": "null",
 
-    "for": "keyword",
     "if": "keyword",
-    "else": "keyword",
-    "while": "keyword",
+        "else": "keyword",
+    "when": "keyword",
     "return": "keyword",
-    "import": "keyword",
-    "break": "keyword",
-    "continue": "keyword",
-    "try": "keyword",
-    "catch": "keyword",
+    "after": "keyword",
+    "next": "keyword",
+    "skip": "keyword",
+    "goto": "keyword",
 
-    "int": "primitive-type",
-    "char": "primitive-type",
-    "boolean": "primitive-type",
-    "double": "primitive-type",
-    "long": "primitive-type",
-    "short": "primitive-type",
 
     "true": "boolean-literal",
     "false": "boolean-literal",
@@ -66,7 +29,7 @@ var startingChars = {
     "STRING_LITERAL": "\""
 }
 
-function lexJava(src, markLines) {
+function lexAutoauto(src, markLines) {
     var result = "";
     var context = "BASE";
     var term = "";
@@ -85,10 +48,10 @@ function lexJava(src, markLines) {
             case "BASE": 
                 if(isAlphaNumeric(char)) {
                     term += char;
-                } else { 
+                } else {
                     if(keywordContexts.hasOwnProperty(term)) {
                         result += `<span class="${markLines===false?"":"hlast-verification-term "}hlast-${keywordContexts[term]}">${term}</span>`;
-                    } else if(term.match(/^-?[\d.]+$/)) {
+                    } else if(term.match(/^-?[\d.]+\w*$/)) {
                         result += `<span class="${markLines===false?"":"hlast-verification-term "}hlast-decimal-literal">${term}</span>`;
                     } else if(isCapitalized(term)) {
                         result += `<span class="${markLines===false?"":"hlast-verification-term "}hlast-type-type">${term}</span>`;
@@ -100,7 +63,11 @@ function lexJava(src, markLines) {
                     
                     term = "";
 
-                    if(char == "\"") {
+                    if(char == "#") {
+                        result += term;
+                        term = "#";
+                        context = "STATEPATH_MARKER";
+                    } else if(char == "\"") {
                         result += term;
                         term = "\"";
                         context = "STRING_LITERAL";
@@ -118,8 +85,16 @@ function lexJava(src, markLines) {
                     }
                 }
                 break;
+            case "STATEPATH_MARKER":
+                term += char
+                if(char == ":") {
+                    result += `<span class="hlast-type-type">${term}</span>`;
+                    term = "";
+                    context = "BASE";
+                }
+                break;
             case "STRING_LITERAL":
-                if(char == "\"") { 
+                if(char == "\"") {
                     term += char;
                     result += `<span class="hlast-string-literal">${term}</span>`;
                     term = "";

@@ -12,9 +12,9 @@ Start here if you haven't coded before.
 
 - [Thinking About Autonomous](/tutorials/basic/thinking-about-auto)
 - [States](/tutorials/basic/states)
+- [Conditionals](/tutorials/basic/conditions)
 - [Grouping States Together](/tutorials/basic/grouping-states)
 - [Doing Things for Some Time](/tutorials/basic/doing-things-for-time)
-- [Conditionals](/tutorials/basic/conditionals)
 
 ## Intermediate Tutorials
 

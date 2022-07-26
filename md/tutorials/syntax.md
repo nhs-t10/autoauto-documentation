@@ -365,5 +365,5 @@ Most mathematical operations are exactly like Java.
 |`\^`|Exponent|`3^2==9`|`Math.pow(3,2)==9`|If you want Java's `^`, see [`Math.xor`](/built-ins#Math-xor).|
 |`%`|Modulo|`3%2==1`|`3%2==1`|
 
-)> Next: [Built-Ins](/built-ins)
+)> [Built-Ins](/built-ins)
 

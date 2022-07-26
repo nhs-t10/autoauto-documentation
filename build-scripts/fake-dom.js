@@ -17,24 +17,14 @@ module.exports = {
 };
 
 /**
- * @typedef {FakeDomNode|RootNode} FakeDocument
+ * @typedef {FakeDomNode & RootNode} FakeDocument
  */
 
 /**
- * @typedef {RootNode} RootNode
+ * @typedef {object} RootNode
+ * @property { (tagName: string) => FakeDomNode } createElement
  */
 
- function RootNode() {
-    return this;
-}
-/**
-     * Create a given HTML node
-     * @param {string} tag The tagName of the object to be created.
-     * @returns {FakeDomNode} A node. 
-     */
-RootNode.prototype.createElement = function (tag) {
-    return new FakeDomNode(tag);
-}
 
 /**
  * 
@@ -257,9 +247,7 @@ Object.defineProperty(FakeDomNode.prototype, "innerHTML", {
         return this.__buildInnerHTML(true);
     },
     set: function (val) {
-        if (val === "") {
-            this.childNodes = [];
-        }
+        this.childNodes = [];
         let parsed = parseHTML(val);
         for (var i = 0; i < parsed.length; i++) {
             this.appendChild(parsed[i]);

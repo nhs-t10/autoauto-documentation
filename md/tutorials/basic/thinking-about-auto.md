@@ -14,7 +14,7 @@ In order to learn about autonomous, we should have a challenge to work on. I'm n
 
 You're on the blue team. Your robot, Cockroach, starts in the blue Start Box; your goal is to push the yellow ball into your blue Goal Zone.
 
-!> It's not *required* for the competition, but a robot's name & pronouns are very important! It's important to like your robot :) they're just lil computer friends. I named the tutorial bot Cockroach because he happens to be brown.
+^> It's not *required* for the competition, but a robot's name & pronouns are very important! It's important to like your robot :) they're just lil computer friends. I named the tutorial bot Cockroach because he happens to be brown.
 
 ## A Basic Plan
 
@@ -52,7 +52,7 @@ These numbers don't need to be exact, but you should try to get the directions a
 
 With your list of steps, you can move on to the next tutorial, where you'll write some code!
 
-)> Next: [States](./states)
+)> [States](./states)
 
 ---
 
