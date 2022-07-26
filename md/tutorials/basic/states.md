@@ -87,4 +87,4 @@ driveOmni() //stop
 Next, we'll be investigating branching logic; how can you have Autoauto make decisions depending on some sensor?
 
 (> [Thinking About Auto](./thinking-about-auto.md)
-)> [Conditions](./conditions)
+)> [Conditions and Multiple Paths](./conditions-and-multiple-paths)

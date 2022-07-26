@@ -1,7 +1,7 @@
 ---
-title: Conditions
+title: Conditions and Multiple Paths
 tags: Tutorial, Basic
-description: A tutorial on conditionals in Autoauto
+description: A tutorial on conditionals in Autoauto, and how to use them to jump between multiple paths
 ---
 
 ## Adding Conditions to the Challenge 
@@ -203,3 +203,4 @@ else goto orangeball;
 
 Great job!
 
+(> [States](./states)
